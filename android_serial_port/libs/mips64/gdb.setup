@@ -1,0 +1,2 @@
+set solib-search-path ./obj/local/mips64
+directory D:/SDK/Android-sdk/android-ndk-r13b/build//../platforms/android-21/arch-mips64/usr/include jni D:/SDK/Android-sdk/android-ndk-r13b/build//../sources/cxx-stl/system

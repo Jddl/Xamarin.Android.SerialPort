@@ -45,11 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="SerialPortDevice.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedNativeLibrary Include="libs\armeabi-v7a\libandroid_serial_port-shared.so" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
