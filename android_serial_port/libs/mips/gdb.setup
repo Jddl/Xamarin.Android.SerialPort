@@ -1,2 +1,0 @@
-set solib-search-path ./obj/local/mips
-directory D:/SDK/Android-sdk/android-ndk-r13b/build//../platforms/android-14/arch-mips/usr/include jni D:/SDK/Android-sdk/android-ndk-r13b/build//../sources/cxx-stl/system
