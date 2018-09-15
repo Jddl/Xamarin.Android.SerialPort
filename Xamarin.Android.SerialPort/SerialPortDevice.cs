@@ -186,15 +186,18 @@ namespace Xamarin.Android.SerialPort
                 return false;
             }
 
-            IntPtr fp = JNIEnv.FindClass(typeof(FileDescriptor));
-            IntPtr fpm = JNIEnv.GetMethodID(fp, "<init>", "()V");
-            IntPtr fpObject = JNIEnv.NewObject(fp, fpm);
-            IntPtr filed = JNIEnv.GetFieldID(fp, "descriptor", "I");
-            JNIEnv.SetField(fpObject, filed, handle);
-            FileDescriptor res = new Java.Lang.Object(fpObject, JniHandleOwnership.TransferGlobalRef).JavaCast<FileDescriptor>();
+           
+            //通过反射对文件句柄赋值
+            var res = new FileDescriptor();
+            var classes = Class.FromType(typeof(FileDescriptor));
+            var descriptorField = classes.GetDeclaredField("descriptor");
+            descriptorField.Accessible = true;
+            descriptorField.Set(res, new Integer(handle));
+
             fileInputStream = new FileInputStream(res);
             fileOutputStream = new FileOutputStream(res);
             isOpen = true;
+
             //开始接收线程
             Task.Run(() =>
             {
@@ -209,7 +212,7 @@ namespace Xamarin.Android.SerialPort
                         }
                         int size = fileInputStream.Read(readData);
 
-                        if (size<=0)
+                        if (size <= 0)
                         {
                             Close();
                             return;

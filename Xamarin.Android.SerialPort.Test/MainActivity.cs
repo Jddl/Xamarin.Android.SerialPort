@@ -55,7 +55,7 @@ namespace Xamarin.Android.SerialPort.Test
 
                     serialport.Send(new byte[] { 0x01, 0x02 });
                     SendCount += 2;
-                    Thread.Sleep(500);
+                    Thread.Sleep(50);
                 }
             });
 
